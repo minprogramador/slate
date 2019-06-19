@@ -4,9 +4,11 @@
 *Markdown builder doc api to html, `https://github.com/lord/slate.git`*
 
 
-### Exemplo de uso:
+### Instalação osx:
 
 ```shell
+
+git clone https://github.com/minprogramador/slate.git
 
 sudo gem install bundler
 
