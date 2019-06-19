@@ -1,15 +1,12 @@
 ---
-title: API Reference
+title: API Referencia
 
 language_tabs: # must be one of https://git.io/vQNgJ
   - shell
-  - ruby
-  - python
-  - javascript
+  - php
 
 toc_footers:
-  - <a href='#'>Sign Up for a Developer Key</a>
-  - <a href='https://github.com/lord/slate'>Documentation Powered by Slate</a>
+  - <a href='#'>github.link</a>
 
 includes:
   - errors
@@ -17,85 +14,47 @@ includes:
 search: true
 ---
 
-# Introduction
+# Introduçāo
 
-Welcome to the Kittn API! You can use our API to access Kittn API endpoints, which can get information on various cats, kittens, and breeds in our database.
+Bem vindo à API do Kittn! Você pode usar nossa API para acessar pontos de extremidade da API do Kittn, que podem obter informações sobre vários gatos, gatinhos e raças em nosso banco de dados.
 
-We have language bindings in Shell, Ruby, Python, and JavaScript! You can view code examples in the dark area to the right, and you can switch the programming language of the examples with the tabs in the top right.
+Nós temos ligações de linguagem no Shell, Ruby, Python e JavaScript! Você pode visualizar exemplos de código na área escura à direita e pode alternar a linguagem de programação dos exemplos com as guias no canto superior direito.
 
-This example API documentation page was created with [Slate](https://github.com/lord/slate). Feel free to edit it and use it as a base for your own API's documentation.
+Este exemplo de página de documentação da API foi criado com [Slate](https://github.com/lord/slate). Sinta-se à vontade para editá-lo e usá-lo como base para a documentação de sua própria API.
 
-# Authentication
+# Autenticação
 
-> To authorize, use this code:
-
-```ruby
-require 'kittn'
-
-api = Kittn::APIClient.authorize!('meowmeowmeow')
-```
-
-```python
-import kittn
-
-api = kittn.authorize('meowmeowmeow')
-```
+> Para autorizar, use este código:
 
 ```shell
-# With shell, you can just pass the correct header with each request
+# Com shell, você pode apenas passar o cabeçalho correto com cada solicitação
 curl "api_endpoint_here"
   -H "Authorization: meowmeowmeow"
 ```
 
-```javascript
-const kittn = require('kittn');
+> Certifique-se de substituir `meowmeowmeow` pela sua chave de API.
 
-let api = kittn.authorize('meowmeowmeow');
-```
 
-> Make sure to replace `meowmeowmeow` with your API key.
+Kittn usa chaves de API para permitir o acesso à API. Você pode registrar uma nova chave de API Kittn em nosso [developer portal](http://example.com/developers).
 
-Kittn uses API keys to allow access to the API. You can register a new Kittn API key at our [developer portal](http://example.com/developers).
-
-Kittn expects for the API key to be included in all API requests to the server in a header that looks like the following:
+O Kittn espera que a chave da API seja incluída em todas as solicitações da API para o servidor em um cabeçalho que se pareça com o seguinte:
 
 `Authorization: meowmeowmeow`
 
 <aside class="notice">
-You must replace <code>meowmeowmeow</code> with your personal API key.
+Você deve substituir <code>meowmeowmeow</code> com sua chave de API pessoal.
 </aside>
 
-# Kittens
+# Gatinhos
 
-## Get All Kittens
-
-```ruby
-require 'kittn'
-
-api = Kittn::APIClient.authorize!('meowmeowmeow')
-api.kittens.get
-```
-
-```python
-import kittn
-
-api = kittn.authorize('meowmeowmeow')
-api.kittens.get()
-```
+## Obter todos os gatinhos
 
 ```shell
 curl "http://example.com/api/kittens"
   -H "Authorization: meowmeowmeow"
 ```
 
-```javascript
-const kittn = require('kittn');
-
-let api = kittn.authorize('meowmeowmeow');
-let kittens = api.kittens.get();
-```
-
-> The above command returns JSON structured like this:
+> O comando acima retorna JSON estruturado assim:
 
 ```json
 [
@@ -116,7 +75,7 @@ let kittens = api.kittens.get();
 ]
 ```
 
-This endpoint retrieves all kittens.
+Este endpoint recupera todos os gatinhos.
 
 ### HTTP Request
 
@@ -126,42 +85,21 @@ This endpoint retrieves all kittens.
 
 Parameter | Default | Description
 --------- | ------- | -----------
-include_cats | false | If set to true, the result will also include cats.
-available | true | If set to false, the result will include kittens that have already been adopted.
+include_cats | false | Se definido como true, o resultado também incluirá gatos.
+available | true | Se definido como falso, o resultado incluirá os gatinhos que já foram adotados.
 
 <aside class="success">
-Remember — a happy kitten is an authenticated kitten!
+Lembre-se - um gatinho feliz é um gatinho autenticado!
 </aside>
 
-## Get a Specific Kitten
-
-```ruby
-require 'kittn'
-
-api = Kittn::APIClient.authorize!('meowmeowmeow')
-api.kittens.get(2)
-```
-
-```python
-import kittn
-
-api = kittn.authorize('meowmeowmeow')
-api.kittens.get(2)
-```
+## Obter um gatinho específico
 
 ```shell
 curl "http://example.com/api/kittens/2"
   -H "Authorization: meowmeowmeow"
 ```
 
-```javascript
-const kittn = require('kittn');
-
-let api = kittn.authorize('meowmeowmeow');
-let max = api.kittens.get(2);
-```
-
-> The above command returns JSON structured like this:
+> O comando acima retorna JSON estruturado assim:
 
 ```json
 {
@@ -173,9 +111,9 @@ let max = api.kittens.get(2);
 }
 ```
 
-This endpoint retrieves a specific kitten.
+Este endpoint recupera um gatinho específico.
 
-<aside class="warning">Inside HTML code blocks like this one, you can't use Markdown, so use <code>&lt;code&gt;</code> blocks to denote code.</aside>
+<aside class="warning">Dentro de blocos de código HTML como este, você não pode usar o Markdown, então use <code>&lt;code&gt;</code> blocos para denotar o código.</aside>
 
 ### HTTP Request
 
@@ -185,23 +123,9 @@ This endpoint retrieves a specific kitten.
 
 Parameter | Description
 --------- | -----------
-ID | The ID of the kitten to retrieve
+ID | O ID do gatinho para recuperar
 
-## Delete a Specific Kitten
-
-```ruby
-require 'kittn'
-
-api = Kittn::APIClient.authorize!('meowmeowmeow')
-api.kittens.delete(2)
-```
-
-```python
-import kittn
-
-api = kittn.authorize('meowmeowmeow')
-api.kittens.delete(2)
-```
+## Excluir um gatinho específico
 
 ```shell
 curl "http://example.com/api/kittens/2"
@@ -209,14 +133,7 @@ curl "http://example.com/api/kittens/2"
   -H "Authorization: meowmeowmeow"
 ```
 
-```javascript
-const kittn = require('kittn');
-
-let api = kittn.authorize('meowmeowmeow');
-let max = api.kittens.delete(2);
-```
-
-> The above command returns JSON structured like this:
+> O comando acima retorna JSON estruturado assim:
 
 ```json
 {
@@ -225,7 +142,7 @@ let max = api.kittens.delete(2);
 }
 ```
 
-This endpoint deletes a specific kitten.
+Este endpoint exclui um gatinho específico.
 
 ### HTTP Request
 
@@ -235,5 +152,5 @@ This endpoint deletes a specific kitten.
 
 Parameter | Description
 --------- | -----------
-ID | The ID of the kitten to delete
+ID | O ID do gatinho para deletar
 
